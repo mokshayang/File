@@ -50,7 +50,7 @@ include_once "./api/base.php";
     } */
     .list-item {
         display: grid;
-        grid-template-columns: 2fr 3fr 2fr 2fr;
+        grid-template-columns: 2fr 2fr 3fr 2fr 2fr 2fr;
         justify-items: center;
         align-items: center;
     }
@@ -85,10 +85,12 @@ include_once "./api/base.php";
     if (count($files) > 0) {
         echo "<ul class='list'>";
         echo "<li class='list-item'>";
+        echo "<div>縮圖</div>";
         echo "<div>描述</div>";
         echo "<div>檔名</div>";
         echo "<div>大小</div>";
         echo "<div>類型</div>";
+        echo "<div>操作</div>";
         echo "</li>";
 
         foreach ($files as $file) {
@@ -98,20 +100,24 @@ include_once "./api/base.php";
                     echo "<img src='./upload/{$file['file_name']}'>";
                 }else{
                     $icon=dummy_icon($file['type']);
-                    echo "<img src='./material/{$file['type']}'>";
+                    echo "<img src='./material/{$icon}'>";
                 }
                 echo "</div>";
-                // echo "<div>";
-                //     echo $file['description'];
-                // echo "</div>";
+                echo "<div>";
+                    echo $file['description'];
+                echo "</div>";
                 echo "<div>";
                     echo $file['file_name'];
                 echo "</div>";
                 echo "<div>";
-                    echo $file['size'];
+                    echo floor($file['size']/1024)."KB";
                 echo "</div>";
                 echo "<div>";
                     echo $file['type'];
+                echo "</div>";
+                echo "<div>";
+                    echo "<a href='./'>編輯</a>";
+                    echo "<a href='./api/del.php?id={$file['id']}'>刪除</a>";
                 echo "</div>";
             echo "<li>";
         }

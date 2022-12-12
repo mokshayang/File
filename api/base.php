@@ -181,23 +181,41 @@ function is_image($type){//$type 為字串格式
     }
 }
 
-function dummy_icon($type){//$type 為字串格式//dummy 替身 魁儡 假的 lorem dummy text
+// function dummy_icon($type){//$type 為字串格式//dummy 替身 魁儡 假的 lorem dummy text
+//     switch($type){
+//         case "text/plain";
+//             return "file-txt.png";
+//         break;
+//         case "application/mspowerpoint";
+//             return "file-ppt.png";
+//         break;
+//         case "application/mswoud";
+//             return "file-doc.png";
+//         break;
+//         case "application/postscript";
+//             return "file-ai.png";
+//         break;
+//         default:
+//             return "file-regular.jpg";
+//     }
+// }
+
+function dummy_icon($type){
     switch($type){
-        case "text/plain";
+        case "text/plain":
             return "file-txt.png";
         break;
-        case "application/mspowerpoint";
-            return "";
+        case "application/mspowerpoint":
+        case "application/vnd.openxmlformats-officedocument.presentationml.pre":
+            return "file-ppt.png";
         break;
-        case "application/mswoud";
-            return "";
+        case "application/msword":
+            return "file-doc.png";
         break;
-        case "application/postscript";
-            return "";
-        break;
-            return true;
+        case "application/postscript":
+            return "file-ai.png";
         break;
         default:
-            return false;
+            return "file-regular.jpg";
     }
 }
