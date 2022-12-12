@@ -10,8 +10,9 @@ if($_FILES['file_name']['error']==0){
     $sub=array_pop($file_str_array);//array_pop(必須是array)
     $file_name_array=explode(".",$file['file_name']);
     $file_name=array_shift($file_name_array).".".$sub;//edit 時候 同筆資料採用原始黨名 $file['file_name']
-    
-
+    if($file['file_name']!==$file_name){//如果檔名不同，則刪除舊檔案(針對附檔名)
+        unlink("../upload/".$file['file_name']);
+    }
     move_uploaded_file($_FILES['file_name']['tmp_name'],"../upload/".$file_name);//檔案移動
     //採用 deinition function ::
     update('upload',['description'=>$_POST['description'],
@@ -19,10 +20,9 @@ if($_FILES['file_name']['error']==0){
                      'type'=>$_FILES['file_name']['type'],
                      'file_name'=>$file_name
                     ],$_POST['id']);
-    // header("location:../upload.php?upload=success");
-
-}else{
-    echo "上傳失敗，請聯絡管理員 !";
-}
-
-?>
+                    
+                }else{
+                    update('upload',['description'=>$_POST['description']],$_POST['id']);
+                }        
+                header("location:../upload.php?upload=success");
+                ?>
