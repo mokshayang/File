@@ -169,7 +169,35 @@ function to($location){
 }
 
 
+function is_image($type){//$type 為字串格式
+    switch($type){
+        case "image/gif";
+        case "image/jpeg";
+        case "image/png";
+            return true;//表示這三個結果都是一樣的
+        break;
+        default:
+        return false;
+    }
+}
 
-
-
-?>
+function dummy_icon($type){//$type 為字串格式//dummy 替身 魁儡 假的 lorem dummy text
+    switch($type){
+        case "text/plain";
+            return "file-txt.png";
+        break;
+        case "application/mspowerpoint";
+            return "";
+        break;
+        case "application/mswoud";
+            return "";
+        break;
+        case "application/postscript";
+            return "";
+        break;
+            return true;
+        break;
+        default:
+            return false;
+    }
+}

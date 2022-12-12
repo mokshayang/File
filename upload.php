@@ -94,7 +94,12 @@ include_once "./api/base.php";
         foreach ($files as $file) {
             echo "<li class='list-item'>";
                 echo "<div>";
+                if(is_image($file['type'])){
                     echo "<img src='./upload/{$file['file_name']}'>";
+                }else{
+                    $icon=dummy_icon($file['type']);
+                    echo "<img src='./material/{$file['type']}'>";
+                }
                 echo "</div>";
                 // echo "<div>";
                 //     echo $file['description'];
