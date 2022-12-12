@@ -1,7 +1,7 @@
 <?php include_once "base.php";
 //編輯檔案 要刪除原檔案 再新增
 //dbSQL edit `file_name` , `size` , `type` , `description`
-$file=find("upload",$_POST['id']);//先找到對應關係
+$file=find("upload",$_POST['id']);//先找到對應關係，一維陣列
 
 $_POST['description'];//dbSQL
 if($_FILES['file_name']['error']==0){
