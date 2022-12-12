@@ -16,10 +16,29 @@
     <title>檔案上傳</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    form{
+        width: 50%;
+        margin: auto;
+    }
+</style>
 <body>
  <h1 class="header">檔案上傳練習</h1>
+ <?php
+    if(isset($_GET['upload']) && ($_GET['upload'] == 'success')){
+        echo "上傳成功";
+    }
+ ?>
  <!----建立你的表單及設定編碼----->
+<form action="./api/upload.php" method="post" enctype="multipart/form-data">
+    <ul>
+        <li>描述 : <input type="text" name="description"></li>
+        <li>檔案 : <input type="file" name="file_name"></li>
+        <li><input type="submit" value="上傳"></li>
+    </ul>
 
+
+</form>
 
 
 
