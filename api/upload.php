@@ -25,7 +25,7 @@ if($_FILES['file_name']['error']==0){
     echo $_FILES['file_name']['type'];
     echo "<br>";
     
-    // header("location:../upload.php?upload=success");
+    header("location:../upload.php?upload=success");
 
 
 
