@@ -116,7 +116,7 @@ include_once "./api/base.php";
                     echo $file['type'];
                 echo "</div>";
                 echo "<div>";
-                    echo "<a href='./'>編輯</a>";
+                    echo "<a href='./edit_form.php?id={$file['id']}'>編輯</a>";
                     echo "<a href='./api/del.php?id={$file['id']}'>刪除</a>";
                 echo "</div>";
             echo "<li>";
