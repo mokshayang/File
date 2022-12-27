@@ -47,11 +47,7 @@ include_once "./api/base.php";
         align-items: center;
         margin-left: 10px;
     }
-    .list-item img{
-        width: 90px;
-        height: 60px;
-        
-    }
+    
     .list-item:nth-child(1){
         background-color: #ff6;
     }

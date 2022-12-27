@@ -39,16 +39,13 @@ $file=find('upload',$_GET['id']);
         justify-items: center;
         align-items: center;
     }
-    .list-item img{
-        width: 90px;
-        height: 60px;
-        padding-top: 3px;
-    }
+   
     .list-item:nth-child(1){
         background-color: #ff6;
     }
     li img {
-        width:150px;
+        width:250px;
+        padding: 8px;
 
     }
 </style>
@@ -61,7 +58,7 @@ $file=find('upload',$_GET['id']);
             <li>
                 <?php
                      if(is_image($file['type'])){
-                        echo "<img src='./upload/{$file['file_name']}' style='width:150px'> ";
+                        echo "<img src='./upload/{$file['file_name']}' style='width:360px'> ";
                     }else{
                         $icon=dummy_icon($file['type']);
                         echo "<img src='./material/{$icon}' style='width:80px'>";
