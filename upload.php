@@ -20,8 +20,10 @@ include_once "./api/base.php";
 </head>
 <style>
     form {
-        width: 50%;
+        width: 80%;
+        min-height: 60px;
         margin: auto;
+        min-width: 800px;
     }
     .list{
         list-style-type: none;
@@ -29,6 +31,7 @@ include_once "./api/base.php";
         margin: 1rem auto;
         padding-top: 1px;
         width: 80%;
+        
     }
     .list-item{
         display: flex;
@@ -36,49 +39,60 @@ include_once "./api/base.php";
         border: 1px solid #aaa;
         margin-top: -1px;
     }
-    /* .list-item div:nth-child(1){
-        width: 30%;
-    }
-    .list-item div:nth-child(2){
-        width: 30%;
-    }
-    .list-item div:nth-child(3){
-        width: 20%;
-    }
-    .list-item div:nth-child(4){
-        width: 20%;
-    } */
+
     .list-item {
         display: grid;
         grid-template-columns: 2fr 2fr 3fr 2fr 2fr 2fr;
         justify-items: center;
         align-items: center;
+        margin-left: 10px;
     }
     .list-item img{
         width: 90px;
         height: 60px;
-        padding-top: 3px;
+        
     }
     .list-item:nth-child(1){
         background-color: #ff6;
     }
+    .state{
+        margin: auto;
+        text-align: center;
+    }
+    .tabtal{
+        height: 60px;
+        display: grid;
+        grid-template-columns: 3fr 4fr;
+        grid-auto-rows: 10px;
+        justify-items: center;
+        padding-left: 60px;
+    }
+  
 </style>
 
 <body>
     <h1 class="header">檔案上傳練習</h1>
-    <?php
-    if (isset($_GET['upload']) && ($_GET['upload'] == 'success')) {
-        echo "上傳成功";
-    }
-    ?>
+  
     <!----建立你的表單及設定編碼----->
     <form action="./api/upload.php" method="post" enctype="multipart/form-data">
-        <ul>
-            <li>描述 : <input type="text" name="description"></li>
-            <li>檔案 : <input type="file" name="file_name"></li>
-            <li><input type="submit" value="上傳"></li>
-        </ul>
+        <div class="tabtal">
+            <div>描述 : <input type="text" name="description"></div>
+            <div>檔案 : <input type="file" name="file_name">
+            <input type="submit" value="上傳"></div>
+        </div>
     </form>
+    <?php
+    if (isset($_GET['upload']) && ($_GET['upload'] == 'success')) {
+        echo "<div class='state'>";
+        echo "上傳成功";
+        echo "</div>";
+    }
+    if (isset($_GET['del'])) {
+        echo "<div style='color:red;' class='state'>";
+        echo $_GET['del'];
+        echo "</div>";
+    }
+    ?>
     <!----建立一個連結來查看上傳後的圖檔---->
     <?php
     $files = all('upload');
@@ -100,7 +114,7 @@ include_once "./api/base.php";
                     echo "<img src='./upload/{$file['file_name']}'>";
                 }else{
                     $icon=dummy_icon($file['type']);
-                    echo "<img src='./material/{$icon}'>";
+                    echo "<img src='./material/{$icon}' style='width:80px'>";
                 }
                 echo "</div>";
                 echo "<div>";
@@ -123,7 +137,9 @@ include_once "./api/base.php";
         }
         echo "</ul>";
     } else {
+        echo "<div class='state'>";
         echo "目前尚無上傳資料~";
+        echo "</div>";
     }
     ?>
 

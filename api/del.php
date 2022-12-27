@@ -8,5 +8,5 @@ unlink("../upload/".$file['file_name']);//刪除檔案要放在刪除資庫前�
 del("upload",$id);//刪除資料庫
 
 // header("location:../upload.php");
-to("../upload.php");
+to("../upload.php?del=已刪除");
 ?>

@@ -61,15 +61,15 @@ $file=find('upload',$_GET['id']);
             <li>
                 <?php
                      if(is_image($file['type'])){
-                        echo "<img src='./upload/{$file['file_name']}'>";
+                        echo "<img src='./upload/{$file['file_name']}' style='width:150px'> ";
                     }else{
                         $icon=dummy_icon($file['type']);
-                        echo "<img src='./material/{$icon}'>";
+                        echo "<img src='./material/{$icon}' style='width:80px'>";
                     }
                 ?>
             </li>
             <li>檔案 : <input type="file" name="file_name"></li>
-            <input type="hidden" name="id" value="<?=$file['id']?>">
+            <input type="hidden" name="id" value="<?=$file['id']?>" >
             <li><input type="submit" value="修改"></li>
         </ul>
     </form>
