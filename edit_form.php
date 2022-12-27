@@ -57,7 +57,7 @@ $file=find('upload',$_GET['id']);
         <ul>
             <li>描述 : <input type="text" name="description" value="<?=$file['description']?>"></li>
             <li>類型 : <?=$file['type']?></li>
-            <li>類型 : <?=$file['size']?>byes</li>
+            <li>大小 : <?=$file['size']?> byes</li>
             <li>
                 <?php
                      if(is_image($file['type'])){
