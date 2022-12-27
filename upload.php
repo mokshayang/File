@@ -55,6 +55,10 @@ include_once "./api/base.php";
     .list-item:nth-child(1){
         background-color: #ff6;
     }
+    .list-item div:nth-child(1) img{
+            width:150px;
+            height:100px;
+        }
     .state{
         margin: auto;
         text-align: center;

@@ -5,11 +5,14 @@ $file=find("upload",$_POST['id']);//先找到對應關係，一維陣列
 
 $_POST['description'];//dbSQL
 if($_FILES['file_name']['error']==0){
-    //$_FILES['file_name']['name']為路徑名稱
+    
+    //取出form的圖檔副檔名(只有副檔名)
     $file_str_array=explode(".",$_FILES['file_name']['name']);
     $sub=array_pop($file_str_array);//array_pop(必須是array)
+
+    //取出db資料表中的圖檔名 (不包含副檔名)
     $file_name_array=explode(".",$file['file_name']);
-    $file_name=array_shift($file_name_array).".".$sub;//edit 時候 同筆資料採用原始黨名 $file['file_name']
+    $file_name=array_shift($file_name_array).".".$sub;//edit 時候 同筆資料採用原始黨名 DB=>$file['file_name']
     if($file['file_name']!==$file_name){//如果檔名不同，則刪除舊檔案(針對附檔名)
         unlink("../upload/".$file['file_name']);
     }
@@ -25,4 +28,3 @@ if($_FILES['file_name']['error']==0){
                     update('upload',['description'=>$_POST['description']],$_POST['id']);
                 }        
                 header("location:../upload.php?upload=success");
-                ?>
