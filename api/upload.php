@@ -1,12 +1,14 @@
 <?php
 include_once "base.php";
 
-if($_FILES['file_name']['error']==0){
-    //$_FILES['file_name']['name']為路徑名稱，必須存入變數才能使用
+if($_FILES['file_name']['error']==0){//$_FILES['file_name']from for form(name="file_name)
+    //$_FILES['file_name']['name']為檔案名稱，必須存入變數才能使用
     $file_str_array=explode(".",$_FILES['file_name']['name']);
-     echo $_FILES['file_name']['name'];
+     echo $_FILES['file_name']['name'];//01C05.gif
      echo "<br>";
-    // echo $_FILES['file_name']['tmp_name'];
+     dd($file_str_array);//[0] => 01C05, [1] => gif
+     echo "<br>";
+    echo $_FILES['file_name']['tmp_name'];
     // echo "<br>";
     // $sub=(array_pop(explode(".",$_FILES['file_name']['name'])));
     $sub=array_pop($file_str_array);//array_pop(必須是array)//副檔名
@@ -32,7 +34,7 @@ if($_FILES['file_name']['error']==0){
     // echo "<br>";
     // echo $_FILES['file_name']['type'];
     // echo "<br>";   
-    // header("location:../upload.php?upload=success");
+    header("location:../upload.php?upload=success");
 }else{
     echo "上傳失敗，請聯絡管理員 !";
 }
